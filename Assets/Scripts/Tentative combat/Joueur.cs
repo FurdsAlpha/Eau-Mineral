@@ -18,7 +18,7 @@ public class Joueur : Combattant
 
     public void OnCollisionEnter(Collision collision)
     {
-        Attaque(Ennemie.collider.gameObject);
+
     }
 
     public void Attaque()
