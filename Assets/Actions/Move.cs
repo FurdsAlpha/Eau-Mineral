@@ -25,6 +25,14 @@ public class @Move : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Interagir"",
+                    ""type"": ""Button"",
+                    ""id"": ""4e27b07c-6d7d-476e-9a50-380aa39662d3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -93,6 +101,28 @@ public class @Move : IInputActionCollection, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2845389c-0482-415f-a283-17d5a93176b5"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""New control scheme"",
+                    ""action"": ""Interagir"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e2c359e9-3fb2-4d73-9171-557e73c78fb5"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""New control scheme"",
+                    ""action"": ""Interagir"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -119,6 +149,7 @@ public class @Move : IInputActionCollection, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
+        m_Player_Interagir = m_Player.FindAction("Interagir", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -169,11 +200,13 @@ public class @Move : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
+    private readonly InputAction m_Player_Interagir;
     public struct PlayerActions
     {
         private @Move m_Wrapper;
         public PlayerActions(@Move wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
+        public InputAction @Interagir => m_Wrapper.m_Player_Interagir;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -186,6 +219,9 @@ public class @Move : IInputActionCollection, IDisposable
                 @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
+                @Interagir.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteragir;
+                @Interagir.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteragir;
+                @Interagir.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteragir;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -193,6 +229,9 @@ public class @Move : IInputActionCollection, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @Interagir.started += instance.OnInteragir;
+                @Interagir.performed += instance.OnInteragir;
+                @Interagir.canceled += instance.OnInteragir;
             }
         }
     }
@@ -209,5 +248,6 @@ public class @Move : IInputActionCollection, IDisposable
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnInteragir(InputAction.CallbackContext context);
     }
 }
