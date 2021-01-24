@@ -25,6 +25,14 @@ public class @Move : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Attak"",
+                    ""type"": ""Button"",
+                    ""id"": ""e4836047-2b24-439f-97d6-5a17d8a52d9e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -93,6 +101,17 @@ public class @Move : IInputActionCollection, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""74df0b01-3b14-43fe-b8c6-d69c036d381a"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attak"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -119,6 +138,7 @@ public class @Move : IInputActionCollection, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
+        m_Player_Attak = m_Player.FindAction("Attak", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -169,11 +189,13 @@ public class @Move : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
+    private readonly InputAction m_Player_Attak;
     public struct PlayerActions
     {
         private @Move m_Wrapper;
         public PlayerActions(@Move wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
+        public InputAction @Attak => m_Wrapper.m_Player_Attak;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -186,6 +208,9 @@ public class @Move : IInputActionCollection, IDisposable
                 @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
+                @Attak.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttak;
+                @Attak.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttak;
+                @Attak.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttak;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -193,6 +218,9 @@ public class @Move : IInputActionCollection, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @Attak.started += instance.OnAttak;
+                @Attak.performed += instance.OnAttak;
+                @Attak.canceled += instance.OnAttak;
             }
         }
     }
@@ -209,5 +237,6 @@ public class @Move : IInputActionCollection, IDisposable
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnAttak(InputAction.CallbackContext context);
     }
 }

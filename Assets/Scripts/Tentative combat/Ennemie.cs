@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ennemie : Combattant
+public class Ennemie : MonoBehaviour
 {
-
+    public int PointDeVie;
+    public int AtkValue;
     // Start is called before the first frame update
     void Start()
     {

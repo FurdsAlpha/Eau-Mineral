@@ -271,7 +271,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1448712846611278853, guid: 7638c8e9dd7f8db4bb4d7ce7f49b1459, type: 3}
       propertyPath: m_Name
-      value: Quad
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2366104941310303236, guid: 7638c8e9dd7f8db4bb4d7ce7f49b1459, type: 3}
+      propertyPath: ennemie
+      value: 
+      objectReference: {fileID: 1161908555}
+    - target: {fileID: 2366104941310303236, guid: 7638c8e9dd7f8db4bb4d7ce7f49b1459, type: 3}
+      propertyPath: AtkValue
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2366104941310303236, guid: 7638c8e9dd7f8db4bb4d7ce7f49b1459, type: 3}
+      propertyPath: PointDeVie
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7638c8e9dd7f8db4bb4d7ce7f49b1459, type: 3}
@@ -494,5 +506,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3dfe8df9df1f2c47a612105329bea98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PointDeVie: 0
-  AtkValue: 0
+  PointDeVie: 5
+  AtkValue: 1

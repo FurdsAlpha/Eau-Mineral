@@ -12,6 +12,14 @@
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Attak",
+                    "type": "Button",
+                    "id": "e4836047-2b24-439f-97d6-5a17d8a52d9e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -78,6 +86,17 @@
                     "processors": "",
                     "groups": "New control scheme",
                     "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "74df0b01-3b14-43fe-b8c6-d69c036d381a",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attak",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
