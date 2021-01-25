@@ -8,7 +8,7 @@ public class SwitchArmes : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Bow();
     }
 
     // Update is called once per frame

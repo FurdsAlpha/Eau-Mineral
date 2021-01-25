@@ -32,7 +32,7 @@ public class Scrip_Attaque : MonoBehaviour
 
         Collider2D[] hitEnnemies = Physics2D.OverlapCircleAll(attaquePoint.position, attaqueRange, ennemyLayer);
 
-        Debug.Log("avant l'overlapsphere");
+        Debug.Log("avant  l'overlapsphere");
         foreach (Collider2D enemy in hitEnnemies)
         {
             Debug.Log("l'overlapsphere fonctionne");
