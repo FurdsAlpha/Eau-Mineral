@@ -105,7 +105,7 @@ public class @Move : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""74df0b01-3b14-43fe-b8c6-d69c036d381a"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
