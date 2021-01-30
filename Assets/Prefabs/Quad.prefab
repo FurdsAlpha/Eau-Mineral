@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 1448712846611278852}
   - component: {fileID: 1448712846611278863}
   - component: {fileID: 1448712846611278862}
-  - component: {fileID: 2366104941310303236}
+  - component: {fileID: 2531532781765887574}
   m_Layer: 0
   m_Name: Quad
   m_TagString: Player
@@ -222,7 +222,7 @@ MonoBehaviour:
   _rigidbody: {fileID: 1448712846611278852}
   _direction: {x: 0, y: 0}
   _speed: 5
---- !u!114 &2366104941310303236
+--- !u!114 &2531532781765887574
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -234,12 +234,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70e104c2467dcf74a8e81358f6615299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AtkValue: 3
-  attaquePoint: {fileID: 5219606120272800484}
-  attaqueRange: 0.6
-  ennemyLayer:
-    serializedVersion: 2
-    m_Bits: 256
+  Weapon:
+  - {fileID: 7921392526485652331}
+  - {fileID: 4642331280342273100}
+  melee: 0
 --- !u!1 &2837821215935085329
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,6 +343,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8427606830841776084}
   - component: {fileID: 2577871709045609003}
+  - component: {fileID: 4997448564215284823}
   m_Layer: 0
   m_Name: Bow
   m_TagString: Untagged
@@ -380,6 +379,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrow: {fileID: 1647513171903653165, guid: 1cbaef745f445494e98835638c07730e, type: 3}
   arrowSpawnPoint: {fileID: 8427606830841776084}
+--- !u!114 &4997448564215284823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4642331280342273100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 38462162d67ef0d4b9d4df04b5b2d26b, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: New control scheme
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &5839347846195782950
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,7 +418,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3610399857354060838}
-  - component: {fileID: 4399865782350608536}
+  - component: {fileID: 2751516285260426512}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -413,7 +442,7 @@ Transform:
   m_Father: {fileID: 1448712846611278848}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4399865782350608536
+--- !u!114 &2751516285260426512
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -422,12 +451,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5839347846195782950}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43db9f0669b1f7e4b87d68e60eafaa19, type: 3}
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weapon:
-  - {fileID: 7921392526485652331}
-  - {fileID: 4642331280342273100}
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
 --- !u!1 &7921392526485652331
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,7 +466,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5421684059638839758}
-  - component: {fileID: 6187921783076662296}
+  - component: {fileID: 226402888358883041}
+  - component: {fileID: 1651306384716045535}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -461,7 +491,7 @@ Transform:
   m_Father: {fileID: 3610399857354060838}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6187921783076662296
+--- !u!114 &226402888358883041
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -470,11 +500,41 @@ MonoBehaviour:
   m_GameObject: {fileID: 7921392526485652331}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70e104c2467dcf74a8e81358f6615299, type: 3}
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 38462162d67ef0d4b9d4df04b5b2d26b, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: New control scheme
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &1651306384716045535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7921392526485652331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c3ac2532ec7cbb498cdfba8918ac316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   AtkValue: 0
-  attaquePoint: {fileID: 0}
+  attaquePoint: {fileID: 5219606120272800484}
   attaqueRange: 0.5
   ennemyLayer:
     serializedVersion: 2

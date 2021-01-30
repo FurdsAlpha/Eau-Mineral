@@ -4,46 +4,45 @@ using UnityEngine;
 
 public class Scrip_Attaque : MonoBehaviour
 {
-    public int AtkValue;
-    public Transform attaquePoint;
-    public float attaqueRange = 0.5f;
-    public LayerMask ennemyLayer;
+    public GameObject[] Weapon;
+    public bool melee;
+    public int _degats;
     // Start is called before the first frame update
     void Start()
-    { 
-
+    {
+        Sword();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Sword()
     {
-        
+        Weapon[0].SetActive(true);
+        Weapon[1].SetActive(false);
+        melee = true;
+    }
+
+    public void Bow()
+    {
+        Weapon[0].SetActive(false);
+        Weapon[1].SetActive(true);
     }
 
     public void OnAttak()
     {
         Attaque();
-        Debug.Log("Appelle la fonction Attaque !");
     }
 
     public void Attaque()
     {
-        Debug.Log("Attaque a reçu l'apelle !");
-
-        Collider2D[] hitEnnemies = Physics2D.OverlapCircleAll(attaquePoint.position, attaqueRange, ennemyLayer);
-
-        Debug.Log("avant  l'overlapsphere");
-        foreach (Collider2D enemy in hitEnnemies)
+        if (melee)
         {
-            Debug.Log("l'overlapsphere fonctionne");
+            Weapon[0].GetComponent<Script_Epee>().Melee(); Debug.Log("commande melee envoyer");
         }
-        Debug.Log("aprés l'overlapsphere");
-    }
 
-    private void OnDrawGizmosSelected()
-    {
-        if (attaquePoint == null)
-            return;
-        Gizmos.DrawWireSphere(attaquePoint.position, attaqueRange);
+        if (melee == false)
+        {
+            Weapon[0].GetComponent<Script_Bow>().Shoot(); Debug.Log("commande shoot envoyer");
+        }
+
+
     }
 }
