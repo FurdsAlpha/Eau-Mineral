@@ -18,7 +18,7 @@ public class Script_Epee : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     public void Melee()
@@ -29,7 +29,6 @@ public class Script_Epee : MonoBehaviour
         foreach (Collider enemy in hitEnnemies)
         {
             Debug.Log("Attaque a l'épée !");
-            GetComponent<Ennemie>().PointDeVie -= 1;
         }
     }
 

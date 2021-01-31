@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Training Sword
   description: Epee trouver sur le bord de la route. Elle n'est pas tres maniable.
-  artwork: {fileID: 0}
-  attack: 5
+  artwork: {fileID: 21300000, guid: aeab8e3913ce2e643b0332130ae013ab, type: 3}
+  _degat: 0
   cooldown: 2
   effet: 0
