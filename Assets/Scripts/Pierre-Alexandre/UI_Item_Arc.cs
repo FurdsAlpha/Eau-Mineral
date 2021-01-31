@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Item : MonoBehaviour
+public class UI_Item_Arc : MonoBehaviour
 {
-    public Sword sword;
+    public Bow bow;
     public Image image;
     // Start is called before the first frame update
     void Start()
     {
-        image.sprite = sword.artwork;
-    }
+        image.sprite = bow.artwork;
 
+    }
     // Update is called once per frame
     void Update()
     {

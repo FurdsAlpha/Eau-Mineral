@@ -7,6 +7,7 @@ public class Bow : ScriptableObject
 {
     [Header("Basic informmation")]
     public new string name;
+    [TextArea]
     public string description;
 
     [Header("Visuel")]
@@ -20,4 +21,5 @@ public class Bow : ScriptableObject
     public enum Effect { None, Burn, Froze, Poison, Paralize }
     [Header("Effet de l'arme")]
     public Effect effet;
+    public Sprite[] visuelEffet;
 }

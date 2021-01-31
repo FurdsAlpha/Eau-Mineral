@@ -30,4 +30,9 @@ public class Deplacement : MonoBehaviour
         Vector2 Mouvement = value.Get<Vector2>();
         _direction = new Vector2(Mouvement.x, Mouvement.y);
     }
+
+    public void OnPause()
+    {
+
+    }
 }

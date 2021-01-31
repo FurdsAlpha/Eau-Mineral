@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38ffeb109969ef4428e94135bfbb8794, type: 3}
-  m_Name: Training_Sword
+  m_Name: Epee Double
   m_EditorClassIdentifier: 
-  name: Training Sword
-  description: Epee trouver sur le bord de la route. Elle n'est pas tres maniable.
-  artwork: {fileID: 21300000, guid: aeab8e3913ce2e643b0332130ae013ab, type: 3}
-  _degat: 0
-  cooldown: 2
+  name: Epzz Double lame
+  description: "Pour ceux pr\xE9ferant la vitesse et l'agilit\xE9."
+  artwork: {fileID: 9136539713707161707, guid: 3b259dcb391904749aa05c3cf0f8f3d1, type: 3}
+  _degat: 2
+  cooldown: 0.5
   effet: 0
+  visuelEffet: []

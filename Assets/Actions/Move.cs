@@ -33,6 +33,14 @@ public class @Move : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""485b8543-7c7b-4a72-bbb4-a19ff36ed8a4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -112,6 +120,17 @@ public class @Move : IInputActionCollection, IDisposable
                     ""action"": ""Attak"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""52c84dad-a759-41a3-a286-14160e654f5c"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -139,6 +158,7 @@ public class @Move : IInputActionCollection, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Attak = m_Player.FindAction("Attak", throwIfNotFound: true);
+        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -190,12 +210,14 @@ public class @Move : IInputActionCollection, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Attak;
+    private readonly InputAction m_Player_Pause;
     public struct PlayerActions
     {
         private @Move m_Wrapper;
         public PlayerActions(@Move wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Attak => m_Wrapper.m_Player_Attak;
+        public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -211,6 +233,9 @@ public class @Move : IInputActionCollection, IDisposable
                 @Attak.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttak;
                 @Attak.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttak;
                 @Attak.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttak;
+                @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -221,6 +246,9 @@ public class @Move : IInputActionCollection, IDisposable
                 @Attak.started += instance.OnAttak;
                 @Attak.performed += instance.OnAttak;
                 @Attak.canceled += instance.OnAttak;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -238,5 +266,6 @@ public class @Move : IInputActionCollection, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnAttak(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

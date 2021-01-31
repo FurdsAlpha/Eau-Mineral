@@ -16,9 +16,10 @@ public class Sword : ScriptableObject
 
     [Header("Statistic")]
     public int _degat;
-    public int cooldown;
+    public float cooldown;
 
     public enum Effect {None, Burn, Froze, Poison, Paralize}
     [Header("Effet de l'arme")]
     public Effect effet;
+    public Sprite[] visuelEffet;
 }

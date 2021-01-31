@@ -5,25 +5,77 @@ using UnityEngine;
 public class Scrip_Attaque : MonoBehaviour
 {
     public GameObject[] Weapon;
+    [Header("Stat")]
     public bool melee;
-    public int _degats;
-    // Start is called before the first frame update
-    void Start()
-    {
-        Sword();
-    }
+    public int _degat;
+    public float cooldown;
+    public int nombreDeFlecheTirerEnUneSeulFoi;
 
-    public void Sword()
-    {
-        Weapon[0].SetActive(true);
-        Weapon[1].SetActive(false);
-        melee = true;
-    }
+    public enum Arme { none, epeeSimple, epeeDouble, arcSimple }
+    [Header("Arme équipée")]
+    public Arme arme;
+    public float attaqueRange = 0.5f;
+    public GameObject attaquePoint;
 
-    public void Bow()
+    [Header("Epee")]
+    public Sword[] TypeDEpee;
+    public LayerMask ennemyLayer;
+
+    [Header("Arc")]
+    public Bow[] TypeDArc;
+    public GameObject Munition;
+
+    void Update()
     {
-        Weapon[0].SetActive(false);
-        Weapon[1].SetActive(true);
+        attaquePoint.transform.position = new Vector3 (
+            this.transform.position.x + GetComponent<Deplacement>()._direction.x * attaqueRange, 
+            this.transform.position.y + GetComponent<Deplacement>()._direction.y * attaqueRange, 
+            this.transform.position.z);
+
+
+        if(arme.ToString() == "epeeSimple")
+        {
+            Debug.Log("EpeeSimple");
+            EpeeSimple();
+        }
+
+        if(arme.ToString() == "epeeDouble")
+        {
+            Debug.Log("EpeeDouble");
+            EpeeDouble();
+        }
+
+        if(arme.ToString() == "arcSimple")
+        {
+            Debug.Log("ArcSimple");
+            ArcSimple();
+        }
+
+        if(arme.ToString() == "none")
+        {
+            Debug.Log("Aucune épée en main");
+        }
+    }
+    public void EpeeSimple()
+    {
+        arme = Arme.epeeSimple;
+        _degat = TypeDEpee[0]._degat;
+        cooldown = TypeDEpee[0].cooldown;
+        nombreDeFlecheTirerEnUneSeulFoi = 1;
+    }
+    public void EpeeDouble()
+    {
+        arme = Arme.epeeDouble;
+        _degat = TypeDEpee[1]._degat;
+        cooldown = TypeDEpee[1].cooldown;
+        nombreDeFlecheTirerEnUneSeulFoi = 1;
+    }
+    public void ArcSimple()
+    {
+        arme = Arme.arcSimple;
+        _degat = TypeDArc[0]._degat;
+        cooldown = TypeDArc[0].cooldown;
+        nombreDeFlecheTirerEnUneSeulFoi = TypeDArc[0].nombreDeFlecheTirerEnUneSeulFoi;
     }
 
     public void OnAttak()
@@ -33,16 +85,35 @@ public class Scrip_Attaque : MonoBehaviour
 
     public void Attaque()
     {
-        if (melee)
+        if (arme == Arme.arcSimple)
         {
-            Weapon[0].GetComponent<Script_Epee>().Melee(); Debug.Log("commande melee envoyer");
+            Shoot();
         }
-
-        if (melee == false)
+        else
         {
-            Weapon[0].GetComponent<Script_Bow>().Shoot(); Debug.Log("commande shoot envoyer");
+            meleeAttak();
         }
+    }
+    
+    public void meleeAttak()
+    {
+        Collider[] hitEnnemies = Physics.OverlapSphere(attaquePoint.transform.position, attaqueRange, ennemyLayer);
 
+        foreach (Collider enemy in hitEnnemies)
+        {
+            Debug.Log("Attaque a l'épée !");
+        }
+    }
+    public void Shoot()
+    {
+        Instantiate(Munition, new Vector3(attaquePoint.transform.position.x, attaquePoint.transform.position.y, 0), Quaternion.identity);
+        Debug.Log("Tire a l'arc !");
+    }
 
+    private void OnDrawGizmosSelected()
+    {
+        if (attaquePoint == null)
+            return;
+        Gizmos.DrawWireSphere(attaquePoint.transform.position, attaqueRange);
     }
 }
