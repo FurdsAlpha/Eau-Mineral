@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +7,7 @@ public class Scrip_Attaque : MonoBehaviour
     public GameObject[] Weapon;
     [Header("Stat")]
     public bool melee;
-    public int _degat;
+    public static int _degat;
     public float cooldown;
     public int nombreDeFlecheTirerEnUneSeulFoi;
 
