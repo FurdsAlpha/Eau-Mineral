@@ -25,6 +25,9 @@ public class Scrip_Attaque : MonoBehaviour
     public Bow[] TypeDArc;
     public GameObject Munition;
 
+    private bool attaqueCheck;
+    private float actualCooldown = 0f;
+
     void Update()
     {
         attaquePoint.transform.position = new Vector3 (
@@ -55,6 +58,11 @@ public class Scrip_Attaque : MonoBehaviour
         {
             Debug.Log("Aucune épée en main");
         }
+
+        if (actualCooldown <= 0)
+        {
+            attaqueCheck = true;
+        }
     }
     public void EpeeSimple()
     {
@@ -80,7 +88,11 @@ public class Scrip_Attaque : MonoBehaviour
 
     public void OnAttak()
     {
-        Attaque();
+        if (attaqueCheck)
+        {
+            Attaque();
+            actualCooldown = cooldown;
+        }
     }
 
     public void Attaque()
