@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Scrip_Attaque : MonoBehaviour
 {
-    public GameObject[] Weapon;
+    //public GameObject[] Weapon;
     [Header("Stat")]
-    public bool melee;
+    //public bool melee;
     public static int _degat;
     public float cooldown;
     public int nombreDeFlecheTirerEnUneSeulFoi;
