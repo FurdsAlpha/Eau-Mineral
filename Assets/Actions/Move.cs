@@ -57,6 +57,14 @@ public class @Move : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""8a686d77-2cd9-4cb1-a9d4-bb8440c74900"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -213,6 +221,17 @@ public class @Move : IInputActionCollection, IDisposable
                     ""action"": ""UtiliserConsommable"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c69f3274-5419-4313-86f4-bc32a96a94f5"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -243,6 +262,7 @@ public class @Move : IInputActionCollection, IDisposable
         m_Player_UtiliserArme = m_Player.FindAction("UtiliserArme", throwIfNotFound: true);
         m_Player_UtiliserPouvoir = m_Player.FindAction("UtiliserPouvoir", throwIfNotFound: true);
         m_Player_UtiliserConsommable = m_Player.FindAction("UtiliserConsommable", throwIfNotFound: true);
+        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -297,6 +317,7 @@ public class @Move : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_UtiliserArme;
     private readonly InputAction m_Player_UtiliserPouvoir;
     private readonly InputAction m_Player_UtiliserConsommable;
+    private readonly InputAction m_Player_Pause;
     public struct PlayerActions
     {
         private @Move m_Wrapper;
@@ -306,6 +327,7 @@ public class @Move : IInputActionCollection, IDisposable
         public InputAction @UtiliserArme => m_Wrapper.m_Player_UtiliserArme;
         public InputAction @UtiliserPouvoir => m_Wrapper.m_Player_UtiliserPouvoir;
         public InputAction @UtiliserConsommable => m_Wrapper.m_Player_UtiliserConsommable;
+        public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -330,6 +352,9 @@ public class @Move : IInputActionCollection, IDisposable
                 @UtiliserConsommable.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUtiliserConsommable;
                 @UtiliserConsommable.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUtiliserConsommable;
                 @UtiliserConsommable.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUtiliserConsommable;
+                @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -349,6 +374,9 @@ public class @Move : IInputActionCollection, IDisposable
                 @UtiliserConsommable.started += instance.OnUtiliserConsommable;
                 @UtiliserConsommable.performed += instance.OnUtiliserConsommable;
                 @UtiliserConsommable.canceled += instance.OnUtiliserConsommable;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -369,5 +397,6 @@ public class @Move : IInputActionCollection, IDisposable
         void OnUtiliserArme(InputAction.CallbackContext context);
         void OnUtiliserPouvoir(InputAction.CallbackContext context);
         void OnUtiliserConsommable(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

@@ -8,8 +8,9 @@ public class Scrip_Attaque : MonoBehaviour
     public static int _degat;
     public float cooldown;
     public int nombreDeFlecheTirerEnUneSeulFoi;
+    public GameObject[] ObjetEquiper;//objet[0] = epee simple; objet[1] = epee double; objet[2] = arc simple
 
-    
+
     public enum Arme { none, epeeSimple, epeeDouble, arcSimple } //Variable pour faire une liste déroulante
     [Header("Arme équipée")]
     public Arme arme;//Liste deroulante des arme
@@ -72,6 +73,11 @@ public class Scrip_Attaque : MonoBehaviour
         _degat = TypeDEpee[0]._degat;
         cooldown = TypeDEpee[0].cooldown;
         nombreDeFlecheTirerEnUneSeulFoi = 1;
+
+        //Active dans l'inventaire(UI) l'image de l'épée simple et desactive les autre
+        ObjetEquiper[0].SetActive(true);
+        ObjetEquiper[1].SetActive(false);
+        ObjetEquiper[2].SetActive(false);
     }
     public void EpeeDouble()//Prend les stat de l'arme selectioné pour l'apliquer au stat du personnage
     {
@@ -79,6 +85,11 @@ public class Scrip_Attaque : MonoBehaviour
         _degat = TypeDEpee[1]._degat;
         cooldown = TypeDEpee[1].cooldown;
         nombreDeFlecheTirerEnUneSeulFoi = 1;
+
+        //Active dans l'inventaire(UI) l'image de l'épée double et desactive les autre
+        ObjetEquiper[0].SetActive(false);
+        ObjetEquiper[1].SetActive(true);
+        ObjetEquiper[2].SetActive(false);
     }
     public void ArcSimple()//Prend les stat de l'arme selectioné pour l'apliquer au stat du personnage
     {
@@ -86,6 +97,11 @@ public class Scrip_Attaque : MonoBehaviour
         _degat = TypeDArc[0]._degat;
         cooldown = TypeDArc[0].cooldown;
         nombreDeFlecheTirerEnUneSeulFoi = TypeDArc[0].nombreDeFlecheTirerEnUneSeulFoi;
+
+        //Active dans l'inventaire(UI) l'image de l'arc simple et desactive les autre
+        ObjetEquiper[0].SetActive(false);
+        ObjetEquiper[1].SetActive(false);
+        ObjetEquiper[2].SetActive(true);
     }
 
     public void OnAttak()//quand le boutton d'attaque est préssé
