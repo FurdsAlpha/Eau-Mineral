@@ -11,6 +11,7 @@ public class SlimeLife : MonoBehaviour
 
     [Header("Mort")]
     public float _fadeOutTime = 1.0f;
+    public int _scoreS = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +36,7 @@ public class SlimeLife : MonoBehaviour
         if(_dieS == true)
         {
             Deplacement._speed = 0.0f;
+            Score._score = Score._score + _scoreS;
 
             StartCoroutine(SpriteFadeOut (GetComponent<SpriteRenderer>()));
 

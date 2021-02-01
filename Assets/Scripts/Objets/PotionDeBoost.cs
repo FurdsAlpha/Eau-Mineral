@@ -26,7 +26,7 @@ public class PotionDeBoost : MonoBehaviour
     {
         if( _popoBoost == true)
         {
-            //_degats = _degats * _boost;
+            Scrip_Attaque._degat = Scrip_Attaque._degat * _boost;
             _coolDown = true;
 
             Destroy(this.gameObject);
@@ -41,7 +41,7 @@ public class PotionDeBoost : MonoBehaviour
 
             if(_rateBoost < 0)
             {
-                //_degats = Les dégats de base qu'il a avec l'arme ;
+                Scrip_Attaque._degat = Scrip_Attaque._dégat/2;
                 _rateBoost = 30.0f;
                 _popoBoost = false;
                 _coolDown = false;

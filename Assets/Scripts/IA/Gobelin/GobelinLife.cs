@@ -11,6 +11,7 @@ public class GobelinLife : MonoBehaviour
 
     [Header("Mort")]
     public float _fadeOutTime = 1.0f;
+    public int _scoreG = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +36,8 @@ public class GobelinLife : MonoBehaviour
         if(_dieG == true)
         {
             Deplacement._speed = 0.0f;
+
+            Score._score = Score._score + _scoreG;
 
             StartCoroutine(SpriteFadeOut (GetComponent<SpriteRenderer>()));
 

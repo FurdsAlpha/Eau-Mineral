@@ -11,6 +11,7 @@ public class SpiderLife : MonoBehaviour
 
     [Header("Mort")]
     public float _fadeOutTime = 1.0f;
+    public int _scoreSP = 20;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +37,7 @@ public class SpiderLife : MonoBehaviour
         if(_dieSP == true)
         {
             Deplacement._speed = 0.0f;
+            Score._score = Score._score + _scoreSP;
 
             StartCoroutine(SpriteFadeOut (GetComponent<SpriteRenderer>()));
 

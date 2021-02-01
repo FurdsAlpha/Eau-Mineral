@@ -11,6 +11,7 @@ public class KingSlimeLife : MonoBehaviour
 
     [Header("Mort")]
     public float _fadeOutTime = 1.0f;
+    public int _scoreKS = 50;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +36,7 @@ public class KingSlimeLife : MonoBehaviour
         if(_dieKS == true)
         {
             Deplacement._speed = 0.0f;
+            Score._score = Score._score + _scoreKS;
 
             StartCoroutine(SpriteFadeOut (GetComponent<SpriteRenderer>()));
 
