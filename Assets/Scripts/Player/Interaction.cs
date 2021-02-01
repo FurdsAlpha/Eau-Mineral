@@ -39,10 +39,31 @@ public class Interaction : MonoBehaviour
         {
             Debug.Log("Hit:" + hitColliders [i] .tag + i) ;
 
-            /*if(hitColliders [i].tag=="PotionSoins")
+            if(hitColliders [i].tag=="HealPotion")
             {
-
-            }*/
+                PotionDeVie._popoHeal = true;
+            }
+            if(hitColliders [i].tag=="SpeedPotion")
+            {
+                PotionDeVitesse._popoSpeed = true;
+            }
+            if(hitColliders [i].tag=="BoostPotion")
+            {
+                PotionDeBoost._popoBoost = true;
+            }
+            if(hitColliders [i].tag=="Cle")
+            {
+                //La clé apparait dans l'inventaire
+                //Variable "j'ai la clé" devient vrai
+            }
+            if(hitColliders [i].tag=="Door")
+            {
+                //if(Variable "j'ai la clé est vraie)
+                {
+                    //La porte s'ouvre
+                    //La clé se détruit
+                }
+            }
 
             i++;
         }
