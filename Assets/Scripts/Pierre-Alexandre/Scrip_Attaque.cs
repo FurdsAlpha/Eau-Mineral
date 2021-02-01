@@ -28,6 +28,10 @@ public class Scrip_Attaque : MonoBehaviour
     private bool attaqueCheck;
     private float actualCooldown = 0f;
 
+    public void Start()
+    {
+        EpeeSimple();//le jeu demare l'épée simple est equipé
+    }
     void Update()
     {
         //la position de l'overlap = cette position(this.transform.position) + la range de l'attaque(attaqueRange) dans la direction du personnage(_direction)
