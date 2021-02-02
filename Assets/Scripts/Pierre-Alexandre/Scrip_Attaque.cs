@@ -30,7 +30,7 @@ public class Scrip_Attaque : MonoBehaviour
 
     public void Start()
     {
-        EpeeSimple();//le jeu demare l'épée simple est equipé
+
     }
     void Update()
     {
@@ -40,29 +40,6 @@ public class Scrip_Attaque : MonoBehaviour
             this.transform.position.y + GetComponent<Deplacement>()._direction.y * attaqueRange, 
             this.transform.position.z);
 
-        //Debug log pour verifier que la bonne arme soit équipé
-        if(arme.ToString() == "epeeSimple")
-        {
-            Debug.Log("EpeeSimple");
-            EpeeSimple();
-        }
-
-        if(arme.ToString() == "epeeDouble")
-        {
-            Debug.Log("EpeeDouble");
-            EpeeDouble();
-        }
-
-        if(arme.ToString() == "arcSimple")
-        {
-            Debug.Log("ArcSimple");
-            ArcSimple();
-        }
-
-        if(arme.ToString() == "none")
-        {
-            Debug.Log("Aucune épée en main");
-        }
 
         //Variable bool pour reste le cooldown
         if (actualCooldown <= 0)
@@ -77,11 +54,6 @@ public class Scrip_Attaque : MonoBehaviour
         _degat = TypeDEpee[0]._degat;
         cooldown = TypeDEpee[0].cooldown;
         nombreDeFlecheTirerEnUneSeulFoi = 1;
-
-        //Active dans l'inventaire(UI) l'image de l'épée simple et desactive les autre
-        ObjetEquiper[0].SetActive(true);
-        ObjetEquiper[1].SetActive(false);
-        ObjetEquiper[2].SetActive(false);
     }
     public void EpeeDouble()//Prend les stat de l'arme selectioné pour l'apliquer au stat du personnage
     {
@@ -89,11 +61,6 @@ public class Scrip_Attaque : MonoBehaviour
         _degat = TypeDEpee[1]._degat;
         cooldown = TypeDEpee[1].cooldown;
         nombreDeFlecheTirerEnUneSeulFoi = 1;
-
-        //Active dans l'inventaire(UI) l'image de l'épée double et desactive les autre
-        ObjetEquiper[0].SetActive(false);
-        ObjetEquiper[1].SetActive(true);
-        ObjetEquiper[2].SetActive(false);
     }
     public void ArcSimple()//Prend les stat de l'arme selectioné pour l'apliquer au stat du personnage
     {
@@ -101,11 +68,6 @@ public class Scrip_Attaque : MonoBehaviour
         _degat = TypeDArc[0]._degat;
         cooldown = TypeDArc[0].cooldown;
         nombreDeFlecheTirerEnUneSeulFoi = TypeDArc[0].nombreDeFlecheTirerEnUneSeulFoi;
-
-        //Active dans l'inventaire(UI) l'image de l'arc simple et desactive les autre
-        ObjetEquiper[0].SetActive(false);
-        ObjetEquiper[1].SetActive(false);
-        ObjetEquiper[2].SetActive(true);
     }
 
     public void OnAttak()//quand le boutton d'attaque est préssé

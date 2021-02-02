@@ -10,6 +10,7 @@ public class Interaction : MonoBehaviour
     public LayerMask layerMask;
 
     public Scrip_Attaque interactionArme;
+    public Inventaire inventaire;
     //Une fonction() pour changer l'arme dans l'ui et dans l'attaque existe dejat dans le Script_Attaque on la recupere pour pourvoir l'utiliser quand on interagie avec l'arme
 
     // Start is called before the first frame update
@@ -31,14 +32,17 @@ public class Interaction : MonoBehaviour
         {
             if (objet.tag == "EpeeSimple")
             {
+                inventaire.armeEquiper = Arme.EpeeSimple;
                 interactionArme.EpeeSimple();
             }
             if (objet.tag == "EpeeDouble")
             {
+                inventaire.armeEquiper = Arme.EpeeDouble;
                 interactionArme.EpeeDouble();
             }
             if (objet.tag == "ArcSimple")
             {
+                inventaire.armeEquiper = Arme.ArcSimple;
                 interactionArme.ArcSimple();
             }
             if (objet.tag == "HealPotion")
@@ -72,7 +76,7 @@ public class Interaction : MonoBehaviour
                 }
             }
 
-            Collider [] hitColliders = Physics.OverlapSphere(gameObject.transform.position, _interactionRadius,layerMask);
+            /*Collider [] hitColliders = Physics.OverlapSphere(gameObject.transform.position, _interactionRadius,layerMask);
             int i = 0;
             while (i <hitColliders.Length)
             {
@@ -122,7 +126,7 @@ public class Interaction : MonoBehaviour
                 }
 
                 i++;
-            }
+            }*/
         }
     }
 
