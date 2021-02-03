@@ -9,7 +9,7 @@ public class Interaction : MonoBehaviour
     public float _interactionRadius = 1f;
     public LayerMask layerMask;
 
-    public Scrip_Attaque interactionArme;
+    [Header("Script Afillier")]
     public Inventaire inventaire;
     //Une fonction() pour changer l'arme dans l'ui et dans l'attaque existe dejat dans le Script_Attaque on la recupere pour pourvoir l'utiliser quand on interagie avec l'arme
 
@@ -33,17 +33,17 @@ public class Interaction : MonoBehaviour
             if (objet.tag == "EpeeSimple")
             {
                 inventaire.armeEquiper = Arme.EpeeSimple;
-                interactionArme.EpeeSimple();
+                inventaire.ArmeEquiper();
             }
             if (objet.tag == "EpeeDouble")
             {
                 inventaire.armeEquiper = Arme.EpeeDouble;
-                interactionArme.EpeeDouble();
+                inventaire.ArmeEquiper();
             }
             if (objet.tag == "ArcSimple")
             {
                 inventaire.armeEquiper = Arme.ArcSimple;
-                interactionArme.ArcSimple();
+                inventaire.ArmeEquiper();
             }
             if (objet.tag == "HealPotion")
             {

@@ -8,6 +8,9 @@ public enum Arme { none, EpeeSimple, EpeeDouble, ArcSimple }
 public enum Pouvoir { none, Poison, Flamme, Gel }
 public class Inventaire : MonoBehaviour
 {
+    [Header("Script Afillier")]
+    public Scrip_Attaque scriptAttaque;
+
     [Header("Quel Objet Aficher ?")]
     public Potion potionEquiper;
     public Arme armeEquiper;
@@ -71,18 +74,21 @@ public class Inventaire : MonoBehaviour
             UI_Armes[0].SetActive(true);
             UI_Armes[1].SetActive(false);
             UI_Armes[2].SetActive(false);
+            scriptAttaque.EpeeSimple();
         }
         if (armeEquiper.ToString() == "EpeeDouble")
         {
             UI_Armes[0].SetActive(false);
             UI_Armes[1].SetActive(true);
             UI_Armes[2].SetActive(false);
+            scriptAttaque.EpeeDouble();
         }
         if (armeEquiper.ToString() == "ArcSimple")
         {
             UI_Armes[0].SetActive(false);
             UI_Armes[1].SetActive(false);
             UI_Armes[2].SetActive(true);
+            scriptAttaque.ArcSimple();
         }
     }
     public void PouvoirEquiper()

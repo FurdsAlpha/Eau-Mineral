@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Scrip_Attaque : MonoBehaviour
 {
+    [Header("Script Afillier")]
+    public Inventaire inventaire;
+
     [Header("Stat")]
     public static int _degat;
     public float cooldown;
@@ -12,21 +15,21 @@ public class Scrip_Attaque : MonoBehaviour
 
 
     public enum Arme { none, epeeSimple, epeeDouble, arcSimple } //Variable pour faire une liste déroulante
-    [Header("Arme équipée")]
-    public Arme arme;//Liste deroulante des arme
+    [Header("Général Attaque Settings")]
+    public Arme armeEquipé;//Liste deroulante des arme
     public float attaqueRange = 0.5f;
     public GameObject attaquePoint;
+    public bool attaqueCheck;
+    private float actualCooldown = 0f;
 
-    [Header("Epee")]
+    [Header("Epee Settings")]
     public Sword[] TypeDEpee;//liste pour mettre les scriptableObjet
     public LayerMask ennemyLayer;
 
-    [Header("Arc")]
+    [Header("Arc Settings")]
     public Bow[] TypeDArc;
     public GameObject Munition;
 
-    private bool attaqueCheck;
-    private float actualCooldown = 0f;
 
     public void Start()
     {
@@ -50,21 +53,21 @@ public class Scrip_Attaque : MonoBehaviour
     }
     public void EpeeSimple()//Prend les stat de l'arme selectioné pour l'apliquer au stat du personnage
     {
-        arme = Arme.epeeSimple;
+        armeEquipé = Arme.epeeSimple;
         _degat = TypeDEpee[0]._degat;
         cooldown = TypeDEpee[0].cooldown;
         nombreDeFlecheTirerEnUneSeulFoi = 1;
     }
     public void EpeeDouble()//Prend les stat de l'arme selectioné pour l'apliquer au stat du personnage
     {
-        arme = Arme.epeeDouble;
+        armeEquipé = Arme.epeeDouble;
         _degat = TypeDEpee[1]._degat;
         cooldown = TypeDEpee[1].cooldown;
         nombreDeFlecheTirerEnUneSeulFoi = 1;
     }
     public void ArcSimple()//Prend les stat de l'arme selectioné pour l'apliquer au stat du personnage
     {
-        arme = Arme.arcSimple;
+        armeEquipé = Arme.arcSimple;
         _degat = TypeDArc[0]._degat;
         cooldown = TypeDArc[0].cooldown;
         nombreDeFlecheTirerEnUneSeulFoi = TypeDArc[0].nombreDeFlecheTirerEnUneSeulFoi;
@@ -82,7 +85,7 @@ public class Scrip_Attaque : MonoBehaviour
 
     public void Attaque()
     {
-        if (arme == Arme.arcSimple) //Si l'arme équipé est l'arc
+        if (armeEquipé == Arme.arcSimple) //Si l'arme équipé est l'arc
         {
             Shoot();
         }
