@@ -2539,12 +2539,13 @@ GameObject:
   - component: {fileID: 591423003}
   - component: {fileID: 591423002}
   - component: {fileID: 591423001}
+  - component: {fileID: 591422996}
   - component: {fileID: 591423000}
+  - component: {fileID: 591422997}
   - component: {fileID: 591422999}
   - component: {fileID: 591422998}
-  - component: {fileID: 591422997}
-  - component: {fileID: 591422996}
   - component: {fileID: 591423005}
+  - component: {fileID: 591423006}
   m_Layer: 0
   m_Name: Player (1)
   m_TagString: Player
@@ -2603,7 +2604,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   interactionArme: {fileID: 591423005}
-  inventaire: {fileID: 1979573313}
+  inventaire: {fileID: 591423006}
 --- !u!114 &591422999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2792,6 +2793,33 @@ MonoBehaviour:
   TypeDArc:
   - {fileID: 11400000, guid: 34ad6a19d98789b449e995bcaede5949, type: 2}
   Munition: {fileID: 0}
+--- !u!114 &591423006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591422995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8728dab6925c5c54ea68118a7b2f4791, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  potionEquiper: 0
+  armeEquiper: 0
+  pouvoirEquiper: 0
+  UI_Potion:
+  - {fileID: 212633752}
+  - {fileID: 1082232789}
+  - {fileID: 518754122}
+  UI_Armes:
+  - {fileID: 813134972}
+  - {fileID: 604420438}
+  - {fileID: 555794373}
+  UI_Pouvoir:
+  - {fileID: 994272026}
+  - {fileID: 1520533144}
+  - {fileID: 1730756371}
 --- !u!1 &604420438
 GameObject:
   m_ObjectHideFlags: 0
@@ -3542,7 +3570,6 @@ GameObject:
   m_Component:
   - component: {fileID: 782894876}
   - component: {fileID: 782894878}
-  - component: {fileID: 782894877}
   - component: {fileID: 782894879}
   m_Layer: 9
   m_Name: Arc Simple
@@ -3565,20 +3592,6 @@ Transform:
   m_Father: {fileID: 252710480}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &782894877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 782894875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c52720d91a3f5f24dac7d83d1d5117db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bow: {fileID: 11400000, guid: 34ad6a19d98789b449e995bcaede5949, type: 2}
-  sprite: {fileID: 782894878}
 --- !u!212 &782894878
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5034,7 +5047,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1131247588}
   - component: {fileID: 1131247590}
-  - component: {fileID: 1131247589}
   - component: {fileID: 1131247591}
   m_Layer: 9
   m_Name: Epee Simple
@@ -5057,20 +5069,6 @@ Transform:
   m_Father: {fileID: 252710480}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1131247589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1131247587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 090efbc4d093c044f95677010c922791, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  epee: {fileID: 11400000, guid: e0abfdde65ec2224381536568e2ffdfe, type: 2}
-  sprite: {fileID: 1131247590}
 --- !u!212 &1131247590
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5602,7 +5600,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1326642174}
   - component: {fileID: 1326642176}
-  - component: {fileID: 1326642175}
   - component: {fileID: 1326642177}
   m_Layer: 9
   m_Name: Epee Double
@@ -5625,20 +5622,6 @@ Transform:
   m_Father: {fileID: 252710480}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1326642175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1326642173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 090efbc4d093c044f95677010c922791, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  epee: {fileID: 11400000, guid: cec695b7563266a48bd26498be6fb224, type: 2}
-  sprite: {fileID: 1326642176}
 --- !u!212 &1326642176
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7538,7 +7521,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1979573312}
-  - component: {fileID: 1979573313}
   m_Layer: 5
   m_Name: INVENTAIRE
   m_TagString: Untagged
@@ -7569,33 +7551,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1979573313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1979573311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8728dab6925c5c54ea68118a7b2f4791, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  potionEquiper: 0
-  armeEquiper: 0
-  pouvoirEquiper: 0
-  UI_Potion:
-  - {fileID: 212633752}
-  - {fileID: 1082232789}
-  - {fileID: 518754122}
-  UI_Armes:
-  - {fileID: 813134972}
-  - {fileID: 604420438}
-  - {fileID: 555794373}
-  UI_Pouvoir:
-  - {fileID: 994272026}
-  - {fileID: 1520533144}
-  - {fileID: 1730756371}
 --- !u!1001 &2031778815
 PrefabInstance:
   m_ObjectHideFlags: 0
