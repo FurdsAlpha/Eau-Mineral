@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Scrip_Attaque : MonoBehaviour
 {
-    [Header("Script Afillier")]
+    [Header("Script Affillier")]
     public Inventaire inventaire;
 
-    [Header("Stat")]
-    public static int _degat;
+    [Header("Statistique")]
+    public float _degat;
     public float cooldown;
     public int nombreDeFlecheTirerEnUneSeulFoi;
     public GameObject[] ObjetEquiper;//objet[0] = epee simple; objet[1] = epee double; objet[2] = arc simple
@@ -77,13 +77,13 @@ public class Scrip_Attaque : MonoBehaviour
     {
         if (attaqueCheck)//L'arme est elle en cooldown ?
         {
-            Attaque();
+            Attack();
             actualCooldown = cooldown;
             //L'arme n'est pas en cooldown l'attaque se lance et le cooldown s'active
         }
     }
 
-    public void Attaque()
+    public void Attack()
     {
         if (armeEquipé == Arme.arcSimple) //Si l'arme équipé est l'arc
         {

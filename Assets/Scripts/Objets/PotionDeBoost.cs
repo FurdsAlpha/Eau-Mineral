@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PotionDeBoost : MonoBehaviour
-{
+{/*
     public float _boost = 2.0f;
     public static bool _popoBoost = false;
     public float _rateBoost = 30.0f;
@@ -47,5 +47,5 @@ public class PotionDeBoost : MonoBehaviour
                 _coolDown = false;
             }
         }
-    }
+    }*/
 }

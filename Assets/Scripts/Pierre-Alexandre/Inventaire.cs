@@ -10,6 +10,7 @@ public class Inventaire : MonoBehaviour
 {
     [Header("Script Afillier")]
     public Scrip_Attaque scriptAttaque;
+    public Script_Potion potion;
 
     [Header("Quel Objet Aficher ?")]
     public Potion potionEquiper;

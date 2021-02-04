@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PotionDeVitesse : MonoBehaviour
-{
+{/*
     public float _speeding = 2.0f;
     public static bool _popoSpeed = false;
     public float _rateSpeed = 30.0f;
@@ -47,5 +47,5 @@ public class PotionDeVitesse : MonoBehaviour
                 _coolDown = false;
             }
         }
-    }
+    }*/
 }

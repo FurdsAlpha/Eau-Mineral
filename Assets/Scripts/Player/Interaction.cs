@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class Interaction : MonoBehaviour
 {
     //public bool _onInteragir = false;
-    public float _interactionRadius = 1f;
+    public float _interactionRadius;
     public LayerMask layerMask;
 
     [Header("Script Afillier")]
@@ -23,6 +23,11 @@ public class Interaction : MonoBehaviour
     void Update()
     {
 
+    }
+
+    public void OnInteragir()
+    {
+        Interagir();
     }
 
     public void Interagir()
@@ -47,18 +52,18 @@ public class Interaction : MonoBehaviour
             }
             if (objet.tag == "HealPotion")
             {
-                Debug.Log("J'ai trouvé une potion de heal");
-                PotionDeVie._popoHeal = true;
+                inventaire.potionEquiper = Potion.HealPotion;
+                inventaire.PotionEquiper();
             }
             if (objet.tag == "SpeedPotion")
             {
-                Debug.Log("J'ai trouvé une potion de speed");
-                PotionDeVitesse._popoSpeed = true;
+                inventaire.potionEquiper = Potion.VitessePotion;
+                inventaire.PotionEquiper();
             }
             if (objet.tag == "BoostPotion")
             {
-                Debug.Log("J'ai trouvé une potion de boost");
-                PotionDeBoost._popoBoost = true;
+                inventaire.potionEquiper = Potion.BoostPotion;
+                inventaire.PotionEquiper();
             }
             if (objet.tag == "Cle")
             {
@@ -129,9 +134,10 @@ public class Interaction : MonoBehaviour
             }*/
         }
     }
-
-    public void OnInteragir()
+    private void OnDrawGizmosSelected()
     {
-        Interagir();
+        if (this == null)
+            return;
+        Gizmos.DrawWireSphere(this.transform.position, _interactionRadius);
     }
 }

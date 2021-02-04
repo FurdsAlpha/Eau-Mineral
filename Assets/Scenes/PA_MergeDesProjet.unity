@@ -1255,7 +1255,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 333860470}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 785645778}
+        m_TargetAssemblyTypeName: MainMenuFounctions, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &333860470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1386,7 +1398,6 @@ GameObject:
   m_Component:
   - component: {fileID: 351317683}
   - component: {fileID: 351317686}
-  - component: {fileID: 351317684}
   - component: {fileID: 351317685}
   m_Layer: 9
   m_Name: PotionHeal
@@ -1409,19 +1420,6 @@ Transform:
   m_Father: {fileID: 2085147623}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &351317684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 351317682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4216219e3e7b4904fa9b732b5d0f3955, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _heal: 20
 --- !u!65 &351317685
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1776,7 +1774,6 @@ GameObject:
   m_Component:
   - component: {fileID: 457215444}
   - component: {fileID: 457215447}
-  - component: {fileID: 457215445}
   - component: {fileID: 457215446}
   m_Layer: 9
   m_Name: PotionBoost
@@ -1799,21 +1796,6 @@ Transform:
   m_Father: {fileID: 2085147623}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &457215445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 457215443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f20cf127e115d3b47944ca7d5e002adb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _boost: 2
-  _rateBoost: 30
-  _coolDown: 0
 --- !u!65 &457215446
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2547,6 +2529,7 @@ GameObject:
   - component: {fileID: 591423006}
   - component: {fileID: 591423005}
   - component: {fileID: 591423007}
+  - component: {fileID: 591423008}
   m_Layer: 0
   m_Name: Player (1)
   m_TagString: Player
@@ -2600,7 +2583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cda7c63b0e831a14a877ea956ca1f2b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactionRadius: 2
+  _interactionRadius: 1
   layerMask:
     serializedVersion: 2
     m_Bits: 512
@@ -2776,6 +2759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventaire: {fileID: 591423006}
+  _degat: 0
   cooldown: 0
   nombreDeFlecheTirerEnUneSeulFoi: 0
   ObjetEquiper:
@@ -2808,6 +2792,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scriptAttaque: {fileID: 591423005}
+  potion: {fileID: 591423008}
   potionEquiper: 0
   armeEquiper: 0
   pouvoirEquiper: 0
@@ -2837,6 +2822,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menu: {fileID: 785645774}
   isPaused: 0
+--- !u!114 &591423008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591422995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e20cc60ba70a0d4a9f4545f5c3477e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventaire: {fileID: 591423006}
+  _Attaque: {fileID: 591423005}
+  deplacement: {fileID: 591422999}
+  _speeding: 2
+  _rateSpeed: 30
+  cooldown: 0
+  _cooldown: 0
+  _boost: 2
+  _rateBoost: 30
+  _heal: 20
 --- !u!1 &604420438
 GameObject:
   m_ObjectHideFlags: 0
@@ -3684,6 +3691,7 @@ GameObject:
   - component: {fileID: 785645775}
   - component: {fileID: 785645777}
   - component: {fileID: 785645776}
+  - component: {fileID: 785645778}
   m_Layer: 5
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -3751,6 +3759,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 785645774}
   m_CullTransparentMesh: 0
+--- !u!114 &785645778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785645774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb42183ae097f434a967322fdb051937, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameScene: PA_MenuScene
 --- !u!1 &808541740
 GameObject:
   m_ObjectHideFlags: 0
@@ -6253,7 +6274,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1534575810}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 785645778}
+        m_TargetAssemblyTypeName: MainMenuFounctions, Assembly-CSharp
+        m_MethodName: Quit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1534575810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7141,7 +7174,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1840449712}
   - component: {fileID: 1840449715}
-  - component: {fileID: 1840449713}
   - component: {fileID: 1840449714}
   m_Layer: 9
   m_Name: PotionVitesse
@@ -7164,21 +7196,6 @@ Transform:
   m_Father: {fileID: 2085147623}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1840449713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1840449711}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681552be502aa99429fe15a4e3158b14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speeding: 2
-  _rateSpeed: 30
-  _coolDown: 0
 --- !u!65 &1840449714
 BoxCollider:
   m_ObjectHideFlags: 0

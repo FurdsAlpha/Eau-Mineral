@@ -8,7 +8,6 @@ public class MainMenuFounctions : MonoBehaviour
     public string GameScene;
     public void Start()
     {
-        SceneManager.LoadScene(GameScene);
     }
     public void Quit()
     {
@@ -17,5 +16,9 @@ public class MainMenuFounctions : MonoBehaviour
 #else
         Application.Quit();
 #endif
+    }
+    public void Play()
+    {
+        SceneManager.LoadScene(GameScene);
     }
 }
