@@ -5,7 +5,7 @@ using UnityEngine;
 public class IA_Araignee : MonoBehaviour
 {
     [Header("Personnages")]
-    public Rigidbody2D _rigidbodySP;
+    public Rigidbody _rigidbodySP;
     public GameObject _target;
     public Animator _spiderAnimator;
 
@@ -36,7 +36,8 @@ public class IA_Araignee : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _rigidbodySP = GetComponent<Rigidbody2D>();
+        _rigidbodySP = GetComponent<Rigidbody>();
+        _target= GameObject.FindGameObjectWithTag("Player");
         _timer += Time.deltaTime;
     }
 

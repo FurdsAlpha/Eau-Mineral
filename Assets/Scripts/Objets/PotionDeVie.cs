@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PotionDeVie : MonoBehaviour
-{
+{/*
     public float _heal = 20.0f;
     public static bool _popoHeal = false;
 
@@ -27,5 +27,5 @@ public class PotionDeVie : MonoBehaviour
 
             Destroy(this.gameObject);
         }
-    }
+    }*/
 }

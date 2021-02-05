@@ -5,7 +5,7 @@ using UnityEngine;
 public class SlimeLife : MonoBehaviour
 {
     [Header("Vie")]
-    public static float _lifeS = 5f;
+    public float _lifeS = 5f;
     public SLifeBar _lifeBarS;
     public bool _dieS = false;
 

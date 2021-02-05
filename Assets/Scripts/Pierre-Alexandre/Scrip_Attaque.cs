@@ -4,92 +4,94 @@ using UnityEngine;
 
 public class Scrip_Attaque : MonoBehaviour
 {
-    public GameObject[] Weapon;
-    [Header("Stat")]
-    public bool melee;
-    public static int _degat;
+    [Header("Script Affillier")]
+    public Inventaire inventaire;
+
+    [Header("Statistique")]
+    public float _degat;
     public float cooldown;
     public int nombreDeFlecheTirerEnUneSeulFoi;
+    public GameObject[] ObjetEquiper;//objet[0] = epee simple; objet[1] = epee double; objet[2] = arc simple
 
-    public enum Arme { none, epeeSimple, epeeDouble, arcSimple }
-    [Header("Arme équipée")]
-    public Arme arme;
+
+    public enum Arme { none, epeeSimple, epeeDouble, arcSimple } //Variable pour faire une liste déroulante
+    [Header("Général Attaque Settings")]
+    public Arme armeEquipé;//Liste deroulante des arme
     public float attaqueRange = 0.5f;
     public GameObject attaquePoint;
+    public bool attaqueCheck;
+    private float actualCooldown = 0f;
 
-    [Header("Epee")]
-    public Sword[] TypeDEpee;
+    [Header("Epee Settings")]
+    public Sword[] TypeDEpee;//liste pour mettre les scriptableObjet
     public LayerMask ennemyLayer;
 
-    [Header("Arc")]
+    [Header("Arc Settings")]
     public Bow[] TypeDArc;
     public GameObject Munition;
 
+
+    public void Start()
+    {
+
+    }
     void Update()
     {
+        //la position de l'overlap = cette position(this.transform.position) + la range de l'attaque(attaqueRange) dans la direction du personnage(_direction)
         attaquePoint.transform.position = new Vector3 (
             this.transform.position.x + GetComponent<Deplacement>()._direction.x * attaqueRange, 
             this.transform.position.y + GetComponent<Deplacement>()._direction.y * attaqueRange, 
             this.transform.position.z);
 
 
-        if(arme.ToString() == "epeeSimple")
+        //Variable bool pour reste le cooldown
+        if (actualCooldown <= 0)
         {
-            Debug.Log("EpeeSimple");
-            EpeeSimple();
+            attaqueCheck = true;
         }
-
-        if(arme.ToString() == "epeeDouble")
-        {
-            Debug.Log("EpeeDouble");
-            EpeeDouble();
-        }
-
-        if(arme.ToString() == "arcSimple")
-        {
-            Debug.Log("ArcSimple");
-            ArcSimple();
-        }
-
-        if(arme.ToString() == "none")
-        {
-            Debug.Log("Aucune épée en main");
-        }
+        actualCooldown -= 1 * Time.deltaTime;
     }
-    public void EpeeSimple()
+    public void EpeeSimple()//Prend les stat de l'arme selectioné pour l'apliquer au stat du personnage
     {
-        arme = Arme.epeeSimple;
+        armeEquipé = Arme.epeeSimple;
         _degat = TypeDEpee[0]._degat;
         cooldown = TypeDEpee[0].cooldown;
         nombreDeFlecheTirerEnUneSeulFoi = 1;
     }
-    public void EpeeDouble()
+    public void EpeeDouble()//Prend les stat de l'arme selectioné pour l'apliquer au stat du personnage
     {
-        arme = Arme.epeeDouble;
+        armeEquipé = Arme.epeeDouble;
         _degat = TypeDEpee[1]._degat;
         cooldown = TypeDEpee[1].cooldown;
         nombreDeFlecheTirerEnUneSeulFoi = 1;
     }
-    public void ArcSimple()
+    public void ArcSimple()//Prend les stat de l'arme selectioné pour l'apliquer au stat du personnage
     {
-        arme = Arme.arcSimple;
+        armeEquipé = Arme.arcSimple;
         _degat = TypeDArc[0]._degat;
         cooldown = TypeDArc[0].cooldown;
         nombreDeFlecheTirerEnUneSeulFoi = TypeDArc[0].nombreDeFlecheTirerEnUneSeulFoi;
     }
 
-    public void OnAttak()
+    public void OnUtiliserArme()//quand le boutton d'attaque est préssé
     {
-        Attaque();
+
+        Debug.Log("Attaque a l'épée !");
+        if (attaqueCheck)//L'arme est elle en cooldown ?
+        {
+            Attack();
+            actualCooldown = cooldown;
+            //L'arme n'est pas en cooldown l'attaque se lance et le cooldown s'active
+        }
     }
 
-    public void Attaque()
+    public void Attack()
     {
-        if (arme == Arme.arcSimple)
+        if (armeEquipé == Arme.arcSimple) //Si l'arme équipé est l'arc
         {
             Shoot();
         }
-        else
+        else//Si ce n'est pas le seul arc disponible alors c'est une épée
         {
             meleeAttak();
         }
@@ -97,6 +99,7 @@ public class Scrip_Attaque : MonoBehaviour
     
     public void meleeAttak()
     {
+
         Collider[] hitEnnemies = Physics.OverlapSphere(attaquePoint.transform.position, attaqueRange, ennemyLayer);
 
         foreach (Collider enemy in hitEnnemies)
@@ -104,7 +107,7 @@ public class Scrip_Attaque : MonoBehaviour
             Debug.Log("Attaque a l'épée !");
         }
     }
-    public void Shoot()
+    public void Shoot()//N'est pas teriminer ! la fleche ne vas pas encore dans la direction du personnage
     {
         Instantiate(Munition, new Vector3(attaquePoint.transform.position.x, attaquePoint.transform.position.y, 0), Quaternion.identity);
         Debug.Log("Tire a l'arc !");

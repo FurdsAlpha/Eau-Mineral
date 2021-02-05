@@ -5,7 +5,7 @@ using UnityEngine;
 public class IA_KingSlime : MonoBehaviour
 {
     [Header("Personnages")]
-    public Rigidbody2D _rigidbodyKS;
+    public Rigidbody _rigidbodyKS;
     public GameObject _target;
     public Animator _slimeKingAnimator;
 
@@ -21,7 +21,8 @@ public class IA_KingSlime : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _rigidbodyKS = GetComponent<Rigidbody2D>();
+        _rigidbodyKS = GetComponent<Rigidbody>();
+        _target= GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame

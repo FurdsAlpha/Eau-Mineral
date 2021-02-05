@@ -5,9 +5,19 @@ using UnityEngine.InputSystem;
 
 public class Interaction : MonoBehaviour
 {
+    [Header("Script Afillier")]
+    public Inventaire inventaire;
+    
+    [Header("Intéraction")]
     public bool _onInteragir = false;
-    public float _interactionRadius = 1f;
+    //public bool _onInteragir = false;
+    public float _interactionRadius;
     public LayerMask layerMask;
+
+    [Header("Effets")]
+    public static bool _haveKey = false;
+    public static bool _ouverture = false;
+    //Une fonction() pour changer l'arme dans l'ui et dans l'attaque existe dejat dans le Script_Attaque on la recupere pour pourvoir l'utiliser quand on interagie avec l'arme
 
     // Start is called before the first frame update
     void Start()
@@ -21,46 +31,53 @@ public class Interaction : MonoBehaviour
 
     }
 
-    private void FixedUpdate()
+    public void OnInteragir()
     {
-        if(_onInteragir == true)
-        {
-            _onInteragir = false;
-            Interagir();
-        }
+        Interagir();
     }
 
     public void Interagir()
     {
-        Collider [] hitColliders = Physics.OverlapSphere(gameObject.transform.position, _interactionRadius,layerMask);
-        int i = 0;
-
-        while(i <hitColliders.Length)
+        Collider[] hitObjet = Physics.OverlapSphere(gameObject.transform.position, _interactionRadius, layerMask);
+        foreach (Collider objet in hitObjet)
         {
-            Debug.Log("Hit:" + hitColliders [i] .tag + i) ;
-
-            if(hitColliders [i].tag=="HealPotion")
+            if (objet.tag == "EpeeSimple")
             {
-                Debug.Log("J'ai trouvé une potion de heal");
-                PotionDeVie._popoHeal = true;
+                inventaire.armeEquiper = Arme.EpeeSimple;
+                inventaire.ArmeEquiper();
             }
-            if(hitColliders [i].tag=="SpeedPotion")
+            if (objet.tag == "EpeeDouble")
             {
-                Debug.Log("J'ai trouvé une potion de speed");
-                PotionDeVitesse._popoSpeed = true;
+                inventaire.armeEquiper = Arme.EpeeDouble;
+                inventaire.ArmeEquiper();
             }
-            if(hitColliders [i].tag=="BoostPotion")
+            if (objet.tag == "ArcSimple")
             {
-                Debug.Log("J'ai trouvé une potion de boost");
-                PotionDeBoost._popoBoost = true;
+                inventaire.armeEquiper = Arme.ArcSimple;
+                inventaire.ArmeEquiper();
             }
-            if(hitColliders [i].tag=="Cle")
+            if (objet.tag == "HealPotion")
+            {
+                inventaire.potionEquiper = Potion.HealPotion;
+                inventaire.PotionEquiper();
+            }
+            if (objet.tag == "SpeedPotion")
+            {
+                inventaire.potionEquiper = Potion.VitessePotion;
+                inventaire.PotionEquiper();
+            }
+            if (objet.tag == "BoostPotion")
+            {
+                inventaire.potionEquiper = Potion.BoostPotion;
+                inventaire.PotionEquiper();
+            }
+            if (objet.tag == "Cle")
             {
                 Debug.Log("J'ai trouvé une clé");
                 //La clé apparait dans l'inventaire
                 //Variable "j'ai la clé" devient vrai
             }
-            if(hitColliders [i].tag=="Door")
+            if (objet.tag == "Door")
             {
                 Debug.Log("J'ai trouvé une porte");
                 //if(Variable "j'ai la clé est vraie)
@@ -69,13 +86,28 @@ public class Interaction : MonoBehaviour
                     //La clé se détruit
                 }
             }
-
-            i++;
+            if (objet.tag == "Clé")
+            {
+                Debug.Log("J'ai trouvé une clé");
+                //La clé apparait dans l'inventaire
+                _haveKey = true;
+            }
+            if (objet.tag == "Door")
+            {
+                Debug.Log("J'ai trouvé une porte");
+                if (_haveKey == true)
+                {
+                    Debug.Log("J'ai ouvert la porte");
+                    _ouverture = true;
+                    _haveKey = false;
+                }
+            }
         }
     }
-
-    public void OnInteragir()
+    private void OnDrawGizmosSelected()
     {
-        _onInteragir = true;
+        if (this == null)
+            return;
+        Gizmos.DrawWireSphere(this.transform.position, _interactionRadius);
     }
 }
