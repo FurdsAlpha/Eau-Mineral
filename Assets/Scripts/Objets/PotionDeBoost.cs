@@ -26,10 +26,8 @@ public class PotionDeBoost : MonoBehaviour
     {
         if( _popoBoost == true)
         {
-            //Scrip_Attaque._degat = Scrip_Attaque._degat * _boost;
+            Scrip_Attaque._degat = Scrip_Attaque._degat * _boost;
             _coolDown = true;
-
-            Destroy(this.gameObject);
         }
     }
 
@@ -39,12 +37,13 @@ public class PotionDeBoost : MonoBehaviour
         {
             _rateBoost -= Time.deltaTime;
 
-            if(_rateBoost < 0)
+            if(_rateBoost <= 0)
             {
-                //Scrip_Attaque._degat = Scrip_Attaque._dégat/2;
+                Scrip_Attaque._degat = Scrip_Attaque._degat/_boost;
                 _rateBoost = 30.0f;
                 _popoBoost = false;
                 _coolDown = false;
+                Destroy(this.gameObject);        
             }
         }
     }*/

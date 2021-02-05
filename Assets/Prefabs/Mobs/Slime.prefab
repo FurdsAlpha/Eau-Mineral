@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5550478295199408970}
   - component: {fileID: 5550478295199408971}
-  - component: {fileID: 5550478295199409012}
+  - component: {fileID: 2804514964744999808}
+  - component: {fileID: -402771233417200752}
   - component: {fileID: 5550478295199409013}
   - component: {fileID: 5550478295199409015}
-  - component: {fileID: 4174758028218285117}
-  - component: {fileID: 8261481656116837457}
-  m_Layer: 10
+  - component: {fileID: 5550478295199409012}
+  m_Layer: 0
   m_Name: Slime
   m_TagString: Slime
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -755644277
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 4518187702968751635, guid: 3315f8d2a2e6b05499d20d30b877f86e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -88,6 +88,69 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!54 &2804514964744999808
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5550478295199408974}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 120
+  m_CollisionDetection: 0
+--- !u!65 &-402771233417200752
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5550478295199408974}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.675, y: 0.5, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5550478295199409013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5550478295199408974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36006de41be78d640809dce3de127a62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbodyS: {fileID: 2804514964744999808}
+  _target: {fileID: 6219284350291675374, guid: c86597f172f57ae4a8193ad896919c17, type: 3}
+  _slimeAnimator: {fileID: 5550478295199409012}
+  _degatsS: 1
+  _rateAttackS: 2
+  _distanceToAttackS: 1
+--- !u!114 &5550478295199409015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5550478295199408974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9d52f8ca554ca34998fb5f0c26b5c3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lifeBarS: {fileID: 5550478295432490045}
+  _dieS: 0
+  _fadeOutTime: 1
+  _scoreS: 1
 --- !u!95 &5550478295199409012
 Animator:
   serializedVersion: 3
@@ -107,70 +170,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5550478295199409013
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5550478295199408974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36006de41be78d640809dce3de127a62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rigidbodyS: {fileID: 8261481656116837457}
-  _target: {fileID: 0}
-  _slimeAnimator: {fileID: 5550478295199409012}
-  _degatsS: 1
-  _rateAttackS: 2
-  _distanceToAttackS: 1
---- !u!114 &5550478295199409015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5550478295199408974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9d52f8ca554ca34998fb5f0c26b5c3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _lifeS: 5
-  _lifeBarS: {fileID: 5550478295432490045}
-  _dieS: 0
-  _fadeOutTime: 1
-  _scoreS: 1
---- !u!65 &4174758028218285117
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5550478295199408974}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.675, y: 0.5, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &8261481656116837457
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5550478295199408974}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &5550478295432490035
 GameObject:
   m_ObjectHideFlags: 0

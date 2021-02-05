@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class Deplacement : MonoBehaviour
 {
     [Header("Personnage")]
-    public Rigidbody2D _rigidbody;
+    public Rigidbody _rigidbody;
     public Animator _playerAnimator;
 
     [Header("Paramètres")]
@@ -17,7 +17,7 @@ public class Deplacement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _rigidbody = GetComponent<Rigidbody2D>();
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame

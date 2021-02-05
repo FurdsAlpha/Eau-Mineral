@@ -23,6 +23,7 @@ public class IA_Slime : MonoBehaviour
     void Start()
     {
         _rigidbodyS = GetComponent<Rigidbody>();
+        _target= GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame

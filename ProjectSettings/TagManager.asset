@@ -15,9 +15,8 @@ TagManager:
   - HealPotion
   - SpeedPotion
   - BoostPotion
-  - EpeeSimple
-  - EpeeDouble
-  - ArcSimple
+  - "Cl\xE9"
+  - Door
   layers:
   - Default
   - TransparentFX
@@ -29,7 +28,7 @@ TagManager:
   - 
   - Environnement
   - Objets
-  - Enemy
+  - 
   - 
   - 
   - 
@@ -66,6 +65,9 @@ TagManager:
     locked: 0
   - name: Potion
     uniqueID: 3983625643
+    locked: 0
+  - name: "Cl\xE9"
+    uniqueID: 64226881
     locked: 0
   - name: Mobs
     uniqueID: 3539323019
