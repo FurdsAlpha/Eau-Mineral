@@ -73,8 +73,10 @@ public class Scrip_Attaque : MonoBehaviour
         nombreDeFlecheTirerEnUneSeulFoi = TypeDArc[0].nombreDeFlecheTirerEnUneSeulFoi;
     }
 
-    public void OnAttak()//quand le boutton d'attaque est préssé
+    public void OnUtiliserArme()//quand le boutton d'attaque est préssé
     {
+
+        Debug.Log("Attaque a l'épée !");
         if (attaqueCheck)//L'arme est elle en cooldown ?
         {
             Attack();
@@ -97,6 +99,7 @@ public class Scrip_Attaque : MonoBehaviour
     
     public void meleeAttak()
     {
+
         Collider[] hitEnnemies = Physics.OverlapSphere(attaquePoint.transform.position, attaqueRange, ennemyLayer);
 
         foreach (Collider enemy in hitEnnemies)

@@ -5,7 +5,7 @@ using UnityEngine;
 public class IA_Slime : MonoBehaviour
 {
     [Header("Personnages")]
-    public Rigidbody2D _rigidbodyS;
+    public Rigidbody _rigidbodyS;
     public GameObject _target;
     public Animator _slimeAnimator;
 
@@ -22,7 +22,7 @@ public class IA_Slime : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _rigidbodyS = GetComponent<Rigidbody2D>();
+        _rigidbodyS = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame

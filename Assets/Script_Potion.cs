@@ -9,6 +9,11 @@ public class Script_Potion : MonoBehaviour
     public Scrip_Attaque _Attaque;
     public Deplacement deplacement;
 
+    [Header("Effet activer")]
+    public GameObject effetDeSoin;
+    public GameObject effetDeForce;
+    public GameObject effetDeVitesse;
+
     [Header("Potion De Vitesse Setings")]
     public float _speeding = 2.0f;
     public float _rateSpeed = 30.0f;
@@ -29,38 +34,50 @@ public class Script_Potion : MonoBehaviour
         if(cooldown < 0)
         {
             Deplacement._speed = 5;
+            inventaire.ArmeEquiper();
+            effetDeForce.SetActive(false);
+            effetDeSoin.SetActive(false);
+            effetDeVitesse.SetActive(false);
         }
         
     }
     public void OnUtiliserConsommable()
     {
+        Debug.Log("consommable utilisé");
         if (inventaire.potionEquiper == Potion.BoostPotion)
         {
             PotionDeBoost();
+            inventaire.potionEquiper = Potion.none;
         }
-        if (inventaire.potionEquiper == Potion.BoostPotion)
+        if (inventaire.potionEquiper == Potion.VitessePotion)
         {
             PotionDeVitesse();
+            inventaire.potionEquiper = Potion.none;
         }
-        if (inventaire.potionEquiper == Potion.BoostPotion)
+        if (inventaire.potionEquiper == Potion.HealPotion)
         {
             PotionDeVie();
+            inventaire.potionEquiper = Potion.none;
         }
+        inventaire.PotionEquiper();
     }
 
     public void PotionDeVitesse()
     {
-        Deplacement._speed += 1 * _speeding;
-        inventaire.potionEquiper = Potion.none;
+        cooldown = _rateSpeed;
+        effetDeVitesse.SetActive(true);
+        Deplacement._speed = Deplacement._speed * _speeding;
     }
     public void PotionDeBoost()
     {
-        _Attaque._degat += 1 * _boost;
-        inventaire.potionEquiper = Potion.none;
+        cooldown = _rateBoost;
+        effetDeForce.SetActive(true);
+        _Attaque._degat = _Attaque._degat * _boost;
     }
     public void PotionDeVie()
     {
+        cooldown = 5;
+        effetDeSoin.SetActive(true);
         PlayerLife._life = PlayerLife._life + _heal;
-        inventaire.potionEquiper = Potion.none;
     }
 }
