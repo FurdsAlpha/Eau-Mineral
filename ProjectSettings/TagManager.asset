@@ -17,6 +17,9 @@ TagManager:
   - BoostPotion
   - "Cl\xE9"
   - Door
+  - ArcSimple
+  - EpeeSimple
+  - EpeeDouble
   layers:
   - Default
   - TransparentFX
@@ -30,7 +33,7 @@ TagManager:
   - Objets
   - 
   - 
-  - 
+  - Enemy
   - 
   - 
   - 
