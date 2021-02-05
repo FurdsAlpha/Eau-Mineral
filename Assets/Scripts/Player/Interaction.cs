@@ -5,9 +5,14 @@ using UnityEngine.InputSystem;
 
 public class Interaction : MonoBehaviour
 {
+    [Header("Intéraction")]
     public bool _onInteragir = false;
     public float _interactionRadius = 1f;
     public LayerMask layerMask;
+
+    [Header("Effets")]
+    public static bool _haveKey = false;
+    public static bool _ouverture = false;
 
     // Start is called before the first frame update
     void Start()
@@ -54,19 +59,20 @@ public class Interaction : MonoBehaviour
                 Debug.Log("J'ai trouvé une potion de boost");
                 PotionDeBoost._popoBoost = true;
             }
-            if(hitColliders [i].tag=="Cle")
+            if(hitColliders [i].tag=="Clé")
             {
                 Debug.Log("J'ai trouvé une clé");
                 //La clé apparait dans l'inventaire
-                //Variable "j'ai la clé" devient vrai
+                _haveKey = true;
             }
             if(hitColliders [i].tag=="Door")
             {
                 Debug.Log("J'ai trouvé une porte");
-                //if(Variable "j'ai la clé est vraie)
+                if(_haveKey == true)
                 {
-                    //La porte s'ouvre
-                    //La clé se détruit
+                    Debug.Log("J'ai ouvert la porte");
+                    _ouverture = true;
+                    _haveKey = false;
                 }
             }
 

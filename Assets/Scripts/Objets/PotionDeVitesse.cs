@@ -28,8 +28,6 @@ public class PotionDeVitesse : MonoBehaviour
         {
             Deplacement._speed = Deplacement._speed * _speeding;
             _coolDown = true;
-
-            Destroy(this.gameObject);
         }
     }
 
@@ -39,12 +37,13 @@ public class PotionDeVitesse : MonoBehaviour
         {
             _rateSpeed -= Time.deltaTime;
 
-            if(_rateSpeed < 0)
+            if(_rateSpeed <= 0)
             {
-                Deplacement._speed = 5.0f;
+                Deplacement._speed = Deplacement._speed / _speeding;
                 _rateSpeed = 30.0f;
                 _popoSpeed = false;
                 _coolDown = false;
+                Destroy(this.gameObject);
             }
         }
     }

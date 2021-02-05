@@ -5,7 +5,7 @@ using UnityEngine;
 public class IA_Gobelin : MonoBehaviour
 {
     [Header("Personnages")]
-    public Rigidbody2D _rigidbodyG;
+    public Rigidbody _rigidbodyG;
     public GameObject _target;
     public Animator _gobelinAnimator;
 
@@ -35,7 +35,8 @@ public class IA_Gobelin : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _rigidbodyG = GetComponent<Rigidbody2D>();
+        _rigidbodyG = GetComponent<Rigidbody>();
+        _target= GameObject.FindGameObjectWithTag("Player");
         _targetPoint = _waypoints[0];
         //GoTo = RightPoint.transform;
     }
