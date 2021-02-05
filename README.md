@@ -29,5 +29,27 @@ Le joueur posséde en bas a droite de l'écrant 4 slot. ils constitue l'inventai
     - L'épee double : Inflige moin de dégat que l'épée simple mais  permet d'attaqué plus vite.
     - L'arc simple : Permet d'envoyer un projectile devant le personnage.
 
+
+<img src = "images/ArmePouvoirs.png" width = "500">
+
+(Image des different arme et pouvoir)
+
+Les potion sont des consomable qui prenne un slot dans l'inventaire le joueur ne peut en avoir qu'une seule.
+
+<img src = "images/PotionBoost.png" width = "200">
+<img src = "images/PotionSoins.png" width = "200">
+<img src = "images/PotionVitesse.png" width = "200">
+
+Leur Effet sont un booste de force Un soint instatané et un boost de vitesse
+
+<img src = "images/effetForce.png" width = "300">
+<img src = "images/effetSoins.png" width = "150">
+<img src = "images/effetSpeed.png" width = "300">
+
 ## Generation Procedurale
 
+## Vidéo GamePlay
+
+(https://www.youtube.com/watch?v=N6DmQTyGbJUv)
+
+![Groupe Eau-Mineral](https://img.youtube.com/vi/N6DmQTyGbJU/0.jpg)
